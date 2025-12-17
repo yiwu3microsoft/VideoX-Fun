@@ -67,7 +67,7 @@ vae_path            = None
 lora_path           = None
 
 # Other params
-sample_size         = [1728, 992]
+# sample_size         = [1728, 992]
 
 # Use torch.float16 if GPU does not support torch.bfloat16
 # ome graphics cards, such as v100, 2080ti, do not support torch.bfloat16
@@ -83,6 +83,7 @@ img_mask = np.array(img_mask)
 # Set the background region to 255, foreground region to 0
 img_mask = np.where(img_mask < 128, 255, 0).astype(np.uint8)
 Image.fromarray(img_mask).save(mask_image)
+sample_size = [img_mask.shape[0], img_mask.shape[1]]
 
 control_context_scale  = 0.75
 
